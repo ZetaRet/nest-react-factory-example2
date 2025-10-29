@@ -2344,14 +2344,16 @@ const Pt=l.createContext(null)
 const zt=l.createContext({outlet:null,matches:[],isDataRoute:!1})
 const Nt=l.createContext(null)
 function Ot(){return null!=l.useContext(Pt)}function Tt(){return Ot()||He(!1),l.useContext(Pt).location}function Lt(e){l.useContext(xt).static||l.useLayoutEffect(e)}function Rt(){let{isDataRoute:e}=l.useContext(zt)
-return e?function(){let{router:e}=Bt($t.UseNavigateStable),t=Wt(Ht.UseNavigateStable),n=l.useRef(!1)
+return e?function(){let{router:e}=Wt(Bt.UseNavigateStable),t=qt(Vt.UseNavigateStable),n=l.useRef(!1)
 return Lt(()=>{n.current=!0}),l.useCallback(function(r,a){void 0===a&&(a={}),n.current&&("number"==typeof r?e.navigate(r):e.navigate(r,Et({fromRouteId:t},a)))},[e,t])}():function(){Ot()||He(!1)
 let e=l.useContext(_t),{basename:t,future:n,navigator:r}=l.useContext(xt),{matches:a}=l.useContext(zt),{pathname:o}=Tt(),i=JSON.stringify(ht(a,n.v7_relativeSplatPath)),u=l.useRef(!1)
 return Lt(()=>{u.current=!0}),l.useCallback(function(n,a){if(void 0===a&&(a={}),!u.current)return
 if("number"==typeof n)return void r.go(n)
 let l=mt(n,JSON.parse(i),o,"path"===a.relative)
-null==e&&"/"!==t&&(l.pathname="/"===l.pathname?t:yt([t,l.pathname])),(a.replace?r.replace:r.push)(l,a.state,a)},[t,r,i,o,e])}()}function Dt(e,t){let{relative:n}=void 0===t?{}:t,{future:r}=l.useContext(xt),{matches:a}=l.useContext(zt),{pathname:o}=Tt(),i=JSON.stringify(ht(a,r.v7_relativeSplatPath))
-return l.useMemo(()=>mt(e,JSON.parse(i),o,"path"===n),[e,i,o,n])}function At(e,t,n,r){Ot()||He(!1)
+null==e&&"/"!==t&&(l.pathname="/"===l.pathname?t:yt([t,l.pathname])),(a.replace?r.replace:r.push)(l,a.state,a)},[t,r,i,o,e])}()}const Dt=l.createContext(null)
+function At(){let{matches:e}=l.useContext(zt),t=e[e.length-1]
+return t?t.params:{}}function Mt(e,t){let{relative:n}=void 0===t?{}:t,{future:r}=l.useContext(xt),{matches:a}=l.useContext(zt),{pathname:o}=Tt(),i=JSON.stringify(ht(a,r.v7_relativeSplatPath))
+return l.useMemo(()=>mt(e,JSON.parse(i),o,"path"===n),[e,i,o,n])}function Ft(e,t,n,r){Ot()||He(!1)
 let{navigator:a}=l.useContext(xt),{matches:o}=l.useContext(zt),i=o[o.length-1],u=i?i.params:{},s=(i&&i.pathname,i?i.pathnameBase:"/")
 i&&i.route
 let c,f=Tt()
@@ -2361,14 +2363,14 @@ let e="string"==typeof t?qe(t):t
 let p=c.pathname||"/",h=p
 if("/"!==s){let e=s.replace(/^\//,"").split("/")
 h="/"+p.replace(/^\//,"").split("/").slice(e.length).join("/")}let m=Ye(e,{pathname:h})
-let y=Ut(m&&m.map(e=>Object.assign({},e,{params:Object.assign({},u,e.params),pathname:yt([s,a.encodeLocation?a.encodeLocation(e.pathname).pathname:e.pathname]),pathnameBase:"/"===e.pathnameBase?s:yt([s,a.encodeLocation?a.encodeLocation(e.pathnameBase).pathname:e.pathnameBase])})),o,n,r)
-return t&&y?l.createElement(Pt.Provider,{value:{location:Et({pathname:"/",search:"",hash:"",state:null,key:"default"},c),navigationType:Fe.Pop}},y):y}function Mt(){let e=function(){var e
-let t=l.useContext(Nt),n=Vt(Ht.UseRouteError),r=Wt(Ht.UseRouteError)
+let y=Ht(m&&m.map(e=>Object.assign({},e,{params:Object.assign({},u,e.params),pathname:yt([s,a.encodeLocation?a.encodeLocation(e.pathname).pathname:e.pathname]),pathnameBase:"/"===e.pathnameBase?s:yt([s,a.encodeLocation?a.encodeLocation(e.pathnameBase).pathname:e.pathnameBase])})),o,n,r)
+return t&&y?l.createElement(Pt.Provider,{value:{location:Et({pathname:"/",search:"",hash:"",state:null,key:"default"},c),navigationType:Fe.Pop}},y):y}function jt(){let e=function(){var e
+let t=l.useContext(Nt),n=Qt(Vt.UseRouteError),r=qt(Vt.UseRouteError)
 if(void 0!==t)return t
 return null==(e=n.errors)?void 0:e[r]}(),t=wt(e)?e.status+" "+e.statusText:e instanceof Error?e.message:JSON.stringify(e),n=e instanceof Error?e.stack:null,r="rgba(200,200,200, 0.5)",a={padding:"0.5rem",backgroundColor:r}
-return l.createElement(l.Fragment,null,l.createElement("h2",null,"Unexpected Application Error!"),l.createElement("h3",{style:{fontStyle:"italic"}},t),n?l.createElement("pre",{style:a},n):null,null)}const Ft=l.createElement(Mt,null)
-class jt extends l.Component{constructor(e){super(e),this.state={location:e.location,revalidation:e.revalidation,error:e.error}}static getDerivedStateFromError(e){return{error:e}}static getDerivedStateFromProps(e,t){return t.location!==e.location||"idle"!==t.revalidation&&"idle"===e.revalidation?{error:e.error,location:e.location,revalidation:e.revalidation}:{error:void 0!==e.error?e.error:t.error,location:t.location,revalidation:e.revalidation||t.revalidation}}componentDidCatch(e,t){console.error("React Router caught the following error during render",e,t)}render(){return void 0!==this.state.error?l.createElement(zt.Provider,{value:this.props.routeContext},l.createElement(Nt.Provider,{value:this.state.error,children:this.props.component})):this.props.children}}function It(e){let{routeContext:t,match:n,children:r}=e,a=l.useContext(_t)
-return a&&a.static&&a.staticContext&&(n.route.errorElement||n.route.ErrorBoundary)&&(a.staticContext._deepestRenderedBoundaryId=n.route.id),l.createElement(zt.Provider,{value:t},r)}function Ut(e,t,n,r){var a
+return l.createElement(l.Fragment,null,l.createElement("h2",null,"Unexpected Application Error!"),l.createElement("h3",{style:{fontStyle:"italic"}},t),n?l.createElement("pre",{style:a},n):null,null)}const It=l.createElement(jt,null)
+class Ut extends l.Component{constructor(e){super(e),this.state={location:e.location,revalidation:e.revalidation,error:e.error}}static getDerivedStateFromError(e){return{error:e}}static getDerivedStateFromProps(e,t){return t.location!==e.location||"idle"!==t.revalidation&&"idle"===e.revalidation?{error:e.error,location:e.location,revalidation:e.revalidation}:{error:void 0!==e.error?e.error:t.error,location:t.location,revalidation:e.revalidation||t.revalidation}}componentDidCatch(e,t){console.error("React Router caught the following error during render",e,t)}render(){return void 0!==this.state.error?l.createElement(zt.Provider,{value:this.props.routeContext},l.createElement(Nt.Provider,{value:this.state.error,children:this.props.component})):this.props.children}}function $t(e){let{routeContext:t,match:n,children:r}=e,a=l.useContext(_t)
+return a&&a.static&&a.staticContext&&(n.route.errorElement||n.route.ErrorBoundary)&&(a.staticContext._deepestRenderedBoundaryId=n.route.id),l.createElement(zt.Provider,{value:t},r)}function Ht(e,t,n,r){var a
 if(void 0===t&&(t=[]),void 0===n&&(n=null),void 0===r&&(r=null),null==e){var o
 if(!n)return null
 if(n.errors)e=n.matches
@@ -2381,58 +2383,62 @@ if((t.route.HydrateFallback||t.route.hydrateFallbackElement)&&(c=e),t.route.id){
 if(t.route.lazy||a){s=!0,i=c>=0?i.slice(0,c+1):[i[0]]
 break}}}return i.reduceRight((e,r,a)=>{let o,f=!1,d=null,p=null
 var h
-n&&(o=u&&r.route.id?u[r.route.id]:void 0,d=r.route.errorElement||Ft,s&&(c<0&&0===a?(h="route-fallback",!1||Qt[h]||(Qt[h]=!0),f=!0,p=null):c===a&&(f=!0,p=r.route.hydrateFallbackElement||null)))
+n&&(o=u&&r.route.id?u[r.route.id]:void 0,d=r.route.errorElement||It,s&&(c<0&&0===a?(h="route-fallback",!1||Kt[h]||(Kt[h]=!0),f=!0,p=null):c===a&&(f=!0,p=r.route.hydrateFallbackElement||null)))
 let m=t.concat(i.slice(0,a+1)),y=()=>{let t
-return t=o?d:f?p:r.route.Component?l.createElement(r.route.Component,null):r.route.element?r.route.element:e,l.createElement(It,{match:r,routeContext:{outlet:e,matches:m,isDataRoute:null!=n},children:t})}
-return n&&(r.route.ErrorBoundary||r.route.errorElement||0===a)?l.createElement(jt,{location:n.location,revalidation:n.revalidation,component:d,error:o,children:y(),routeContext:{outlet:null,matches:m,isDataRoute:!0}}):y()},null)}var $t=function(e){return e.UseBlocker="useBlocker",e.UseRevalidator="useRevalidator",e.UseNavigateStable="useNavigate",e}($t||{}),Ht=function(e){return e.UseBlocker="useBlocker",e.UseLoaderData="useLoaderData",e.UseActionData="useActionData",e.UseRouteError="useRouteError",e.UseNavigation="useNavigation",e.UseRouteLoaderData="useRouteLoaderData",e.UseMatches="useMatches",e.UseRevalidator="useRevalidator",e.UseNavigateStable="useNavigate",e.UseRouteId="useRouteId",e}(Ht||{})
-function Bt(e){let t=l.useContext(_t)
-return t||He(!1),t}function Vt(e){let t=l.useContext(Ct)
-return t||He(!1),t}function Wt(e){let t=function(){let e=l.useContext(zt)
+return t=o?d:f?p:r.route.Component?l.createElement(r.route.Component,null):r.route.element?r.route.element:e,l.createElement($t,{match:r,routeContext:{outlet:e,matches:m,isDataRoute:null!=n},children:t})}
+return n&&(r.route.ErrorBoundary||r.route.errorElement||0===a)?l.createElement(Ut,{location:n.location,revalidation:n.revalidation,component:d,error:o,children:y(),routeContext:{outlet:null,matches:m,isDataRoute:!0}}):y()},null)}var Bt=function(e){return e.UseBlocker="useBlocker",e.UseRevalidator="useRevalidator",e.UseNavigateStable="useNavigate",e}(Bt||{}),Vt=function(e){return e.UseBlocker="useBlocker",e.UseLoaderData="useLoaderData",e.UseActionData="useActionData",e.UseRouteError="useRouteError",e.UseNavigation="useNavigation",e.UseRouteLoaderData="useRouteLoaderData",e.UseMatches="useMatches",e.UseRevalidator="useRevalidator",e.UseNavigateStable="useNavigate",e.UseRouteId="useRouteId",e}(Vt||{})
+function Wt(e){let t=l.useContext(_t)
+return t||He(!1),t}function Qt(e){let t=l.useContext(Ct)
+return t||He(!1),t}function qt(e){let t=function(){let e=l.useContext(zt)
 return e||He(!1),e}(),n=t.matches[t.matches.length-1]
-return n.route.id||He(!1),n.route.id}const Qt={}
-function qt(e,t){null==e||e.v7_startTransition,void 0===(null==e?void 0:e.v7_relativeSplatPath)&&(!t||t.v7_relativeSplatPath),t&&(t.v7_fetcherPersist,t.v7_normalizeFormMethod,t.v7_partialHydration,t.v7_skipActionErrorRevalidation)}o.startTransition
-function Kt(e){He(!1)}function Xt(e){let{basename:t="/",children:n=null,location:r,navigationType:a=Fe.Pop,navigator:o,static:i=!1,future:u}=e
+return n.route.id||He(!1),n.route.id}const Kt={}
+function Xt(e,t){null==e||e.v7_startTransition,void 0===(null==e?void 0:e.v7_relativeSplatPath)&&(!t||t.v7_relativeSplatPath),t&&(t.v7_fetcherPersist,t.v7_normalizeFormMethod,t.v7_partialHydration,t.v7_skipActionErrorRevalidation)}o.startTransition
+function Yt(e){return function(e){let t=l.useContext(zt).outlet
+return t?l.createElement(Dt.Provider,{value:e},t):t}(e.context)}function Gt(e){He(!1)}function Jt(e){let{basename:t="/",children:n=null,location:r,navigationType:a=Fe.Pop,navigator:o,static:i=!1,future:u}=e
 Ot()&&He(!1)
 let s=t.replace(/^\/*/,"/"),c=l.useMemo(()=>({basename:s,navigator:o,static:i,future:Et({v7_relativeSplatPath:!1},u)}),[s,u,o,i])
 "string"==typeof r&&(r=qe(r))
 let{pathname:f="/",search:d="",hash:p="",state:h=null,key:m="default"}=r,y=l.useMemo(()=>{let e=ft(f,s)
 return null==e?null:{location:{pathname:e,search:d,hash:p,state:h,key:m},navigationType:a}},[s,f,d,p,h,m,a])
-return null==y?null:l.createElement(xt.Provider,{value:c},l.createElement(Pt.Provider,{children:n,value:y}))}function Yt(e){let{children:t,location:n}=e
-return At(Gt(t),n)}new Promise(()=>{})
+return null==y?null:l.createElement(xt.Provider,{value:c},l.createElement(Pt.Provider,{children:n,value:y}))}function Zt(e){let{children:t,location:n}=e
+return Ft(en(t),n)}new Promise(()=>{})
 l.Component
-function Gt(e,t){void 0===t&&(t=[])
+function en(e,t){void 0===t&&(t=[])
 let n=[]
 return l.Children.forEach(e,(e,r)=>{if(!l.isValidElement(e))return
 let a=[...t,r]
-if(e.type===l.Fragment)return void n.push.apply(n,Gt(e.props.children,a))
-e.type!==Kt&&He(!1),e.props.index&&e.props.children&&He(!1)
+if(e.type===l.Fragment)return void n.push.apply(n,en(e.props.children,a))
+e.type!==Gt&&He(!1),e.props.index&&e.props.children&&He(!1)
 let o={id:e.props.id||a.join("-"),caseSensitive:e.props.caseSensitive,element:e.props.element,Component:e.props.Component,index:e.props.index,path:e.props.path,loader:e.props.loader,action:e.props.action,errorElement:e.props.errorElement,ErrorBoundary:e.props.ErrorBoundary,hasErrorBoundary:null!=e.props.ErrorBoundary||null!=e.props.errorElement,shouldRevalidate:e.props.shouldRevalidate,handle:e.props.handle,lazy:e.props.lazy}
-e.props.children&&(o.children=Gt(e.props.children,a)),n.push(o)}),n}function Jt(){return Jt=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t]
-for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},Jt.apply(this,arguments)}function Zt(e,t){if(null==e)return{}
+e.props.children&&(o.children=en(e.props.children,a)),n.push(o)}),n}function tn(){return tn=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t]
+for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},tn.apply(this,arguments)}function nn(e,t){if(null==e)return{}
 var n,r,a={},l=Object.keys(e)
 for(r=0;r<l.length;r++)n=l[r],t.indexOf(n)>=0||(a[n]=e[n])
 return a}new Set(["application/x-www-form-urlencoded","multipart/form-data","text/plain"])
-const en=["onClick","relative","reloadDocument","replace","state","target","to","preventScrollReset","viewTransition"]
+const rn=["onClick","relative","reloadDocument","replace","state","target","to","preventScrollReset","viewTransition"]
 try{window.__reactRouterVersion="6"}catch(e){}new Map
-const tn=o.startTransition
+const an=o.startTransition
 Ie.flushSync,o.useId
-function nn(e){let{basename:t,children:n,future:r,window:a}=e,o=l.useRef()
+function ln(e){let{basename:t,children:n,future:r,window:a}=e,o=l.useRef()
 var i
 null==o.current&&(o.current=(void 0===(i={window:a,v5Compat:!0})&&(i={}),Ke(function(e,t){let{pathname:n,search:r,hash:a}=e.location
 return We("",{pathname:n,search:r,hash:a},t.state&&t.state.usr||null,t.state&&t.state.key||"default")},function(e,t){return"string"==typeof t?t:Qe(t)},null,i)))
-let u=o.current,[s,c]=l.useState({action:u.action,location:u.location}),{v7_startTransition:f}=r||{},d=l.useCallback(e=>{f&&tn?tn(()=>c(e)):c(e)},[c,f])
-return l.useLayoutEffect(()=>u.listen(d),[u,d]),l.useEffect(()=>qt(r),[r]),l.createElement(Xt,{basename:t,children:n,location:s.location,navigationType:s.action,navigator:u,future:r})}const rn="undefined"!=typeof window&&void 0!==window.document&&void 0!==window.document.createElement,an=/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i,ln=l.forwardRef(function(e,t){let n,{onClick:r,relative:a,reloadDocument:o,replace:i,state:u,target:s,to:c,preventScrollReset:f,viewTransition:d}=e,p=Zt(e,en),{basename:h}=l.useContext(xt),m=!1
-if("string"==typeof c&&an.test(c)&&(n=c,rn))try{let e=new URL(window.location.href),t=c.startsWith("//")?new URL(e.protocol+c):new URL(c),n=ft(t.pathname,h)
+let u=o.current,[s,c]=l.useState({action:u.action,location:u.location}),{v7_startTransition:f}=r||{},d=l.useCallback(e=>{f&&an?an(()=>c(e)):c(e)},[c,f])
+return l.useLayoutEffect(()=>u.listen(d),[u,d]),l.useEffect(()=>Xt(r),[r]),l.createElement(Jt,{basename:t,children:n,location:s.location,navigationType:s.action,navigator:u,future:r})}const on="undefined"!=typeof window&&void 0!==window.document&&void 0!==window.document.createElement,un=/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i,sn=l.forwardRef(function(e,t){let n,{onClick:r,relative:a,reloadDocument:o,replace:i,state:u,target:s,to:c,preventScrollReset:f,viewTransition:d}=e,p=nn(e,rn),{basename:h}=l.useContext(xt),m=!1
+if("string"==typeof c&&un.test(c)&&(n=c,on))try{let e=new URL(window.location.href),t=c.startsWith("//")?new URL(e.protocol+c):new URL(c),n=ft(t.pathname,h)
 t.origin===e.origin&&null!=n?c=n+t.search+t.hash:m=!0}catch(e){}let y=function(e,t){let{relative:n}=void 0===t?{}:t
 Ot()||He(!1)
-let{basename:r,navigator:a}=l.useContext(xt),{hash:o,pathname:i,search:u}=Dt(e,{relative:n}),s=i
-return"/"!==r&&(s="/"===i?r:yt([r,i])),a.createHref({pathname:s,search:u,hash:o})}(c,{relative:a}),g=function(e,t){let{target:n,replace:r,state:a,preventScrollReset:o,relative:i,viewTransition:u}=void 0===t?{}:t,s=Rt(),c=Tt(),f=Dt(e,{relative:i})
+let{basename:r,navigator:a}=l.useContext(xt),{hash:o,pathname:i,search:u}=Mt(e,{relative:n}),s=i
+return"/"!==r&&(s="/"===i?r:yt([r,i])),a.createHref({pathname:s,search:u,hash:o})}(c,{relative:a}),g=function(e,t){let{target:n,replace:r,state:a,preventScrollReset:o,relative:i,viewTransition:u}=void 0===t?{}:t,s=Rt(),c=Tt(),f=Mt(e,{relative:i})
 return l.useCallback(t=>{if(function(e,t){return!(0!==e.button||t&&"_self"!==t||function(e){return!!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)}(e))}(t,n)){t.preventDefault()
 let n=void 0!==r?r:Qe(c)===Qe(f)
 s(e,{replace:n,state:a,preventScrollReset:o,relative:i,viewTransition:u})}},[c,s,f,r,a,n,e,o,i,u])}(c,{replace:i,state:u,target:s,preventScrollReset:f,relative:a,viewTransition:d})
-return l.createElement("a",Jt({},p,{href:n||y,onClick:m||o?r:function(e){r&&r(e),e.defaultPrevented||g(e)},ref:t,target:s}))})
-var on,un;(function(e){e.UseScrollRestoration="useScrollRestoration",e.UseSubmit="useSubmit",e.UseSubmitFetcher="useSubmitFetcher",e.UseFetcher="useFetcher",e.useViewTransitionState="useViewTransitionState"})(on||(on={})),function(e){e.UseFetcher="useFetcher",e.UseFetchers="useFetchers",e.UseScrollRestoration="useScrollRestoration"}(un||(un={}))
-function sn(){return l.createElement("div",null,l.createElement("h1",null,"Board Management"),l.createElement(nn,null,l.createElement("nav",null,l.createElement("ul",null,l.createElement("li",null,l.createElement(ln,{to:"/"},"Home")),l.createElement("li",null,l.createElement(ln,{to:"/projects/"},"Projects")))),l.createElement(Yt,null)))}var cn=function(e){const t=function(e){const{thunk:t=!0,immutableCheck:n=!0,serializableCheck:r=!0,actionCreatorCheck:a=!0}=e??{}
+return l.createElement("a",tn({},p,{href:n||y,onClick:m||o?r:function(e){r&&r(e),e.defaultPrevented||g(e)},ref:t,target:s}))})
+var cn,fn;(function(e){e.UseScrollRestoration="useScrollRestoration",e.UseSubmit="useSubmit",e.UseSubmitFetcher="useSubmitFetcher",e.UseFetcher="useFetcher",e.useViewTransitionState="useViewTransitionState"})(cn||(cn={})),function(e){e.UseFetcher="useFetcher",e.UseFetchers="useFetchers",e.UseScrollRestoration="useScrollRestoration"}(fn||(fn={}))
+var dn=function(){return l.createElement("div",null,l.createElement("h2",null,"Home"))},pn=function(){return l.createElement("div",null,l.createElement("h2",null,"Projects"),l.createElement("nav",null,l.createElement("ul",null,l.createElement("li",null,l.createElement(sn,{to:"create"},"Create Project")),l.createElement("li",null,l.createElement(sn,{to:"list"},"List Projects")))),l.createElement(Yt,null))},hn=function(){return l.createElement("div",null,"Create Project")},mn=function(){return l.createElement("div",null,"List Projects")},yn=function(){At().projectid
+return l.createElement("div",null,"Edit Project")},gn=function(){At().projectid
+return l.createElement("div",null,"View Project")}
+function vn(){return l.createElement("div",null,l.createElement("h1",null,"Board Management"),l.createElement(ln,null,l.createElement("nav",null,l.createElement("ul",null,l.createElement("li",null,l.createElement(sn,{to:"/"},"Home")),l.createElement("li",null,l.createElement(sn,{to:"/projects/"},"Projects")))),l.createElement(Zt,null,l.createElement(Gt,{path:"/",element:l.createElement(dn,null)}),l.createElement(Gt,{path:"/projects/",element:l.createElement(pn,null)},l.createElement(Gt,{path:"create",element:l.createElement(hn,null)}),l.createElement(Gt,{path:"list",element:l.createElement(mn,null)}),l.createElement(Gt,{path:"edit/:projectid/",element:l.createElement(yn,null)}),l.createElement(Gt,{path:"view/:projectid/",element:l.createElement(gn,null)})))))}var bn=function(e){const t=function(e){const{thunk:t=!0,immutableCheck:n=!0,serializableCheck:r=!0,actionCreatorCheck:a=!0}=e??{}
 let l=new Se
 return t&&("boolean"==typeof t?l.push(z):l.push(N(t.extraArgument))),l},{reducer:n,middleware:r,devTools:a=!0,duplicateMiddlewareCheck:l=!0,preloadedState:o,enhancers:i}=e||{}
 let u,s
@@ -2446,4 +2452,4 @@ let l=()=>{throw new Error(b(15))}
 const o={getState:a.getState,dispatch:(e,...t)=>l(e,...t)},i=e.map(e=>e(o))
 return l=x(...i)(a.dispatch),{...a,dispatch:l}}}(...s),d=Pe(f)
 return _(u,o,c(..."function"==typeof i?i(d):d()))}({reducer:{project:Re({name:"project",initialState:{projects:[]},reducers:{}})}})
-window.bodyOnLoad=function(){var e=document.getElementById("root");(0,i.createRoot)(e).render(l.createElement(v,{store:cn},l.createElement(sn,null)))}})()
+window.bodyOnLoad=function(){var e=document.getElementById("root");(0,i.createRoot)(e).render(l.createElement(v,{store:bn},l.createElement(vn,null)))}})()
