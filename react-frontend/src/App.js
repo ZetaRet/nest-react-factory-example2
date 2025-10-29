@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link, Outlet, useParams, useNavigate } from "react-router-dom";
 import { ProjectList } from "./ProjectList";
+import { ProjectView } from "./ProjectView";
 
 const Home = () => {
 	return (
@@ -50,7 +51,11 @@ const ProjectEditWrapper = () => {
 const ProjectViewWrapper = () => {
 	const { projectid } = useParams();
 
-	return <div>View Project</div>;
+	return (
+		<div>
+			<ProjectView projectid={projectid} />
+		</div>
+	);
 };
 
 const Boards = () => {

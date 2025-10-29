@@ -14,7 +14,11 @@ export function ProjectList() {
 
 	const projectsDom = projects.map((e) => (
 		<div key={e.id}>
-			<Link to={"/projects/view/" + e.id}>
+			<Link to={"/projects/edit/" + e.id} className="edit-btn">
+				Edit
+			</Link>
+			<span> </span>
+			<Link to={"/projects/view/" + e.id} className="view-btn">
 				{e.title} [{e.id}]
 			</Link>
 		</div>
@@ -22,7 +26,7 @@ export function ProjectList() {
 	return (
 		<div>
 			<h2>List Projects</h2>
-			<div class="projects-list">{projectsDom}</div>
+			<div className="projects-list">{projectsDom}</div>
 		</div>
 	);
 }
