@@ -6,5 +6,5 @@ Use of Nest Decorators in ValidationPipe and TypeORM to construct DataSource, En
 
 SQL Schema is automatically created after starting the app using `synchronize: true` of TypeORMModule and maintains its tables with the entities.  
 
-React Hooks and functional components, router.  
+React Hooks and functional components, redux, router.  
 
