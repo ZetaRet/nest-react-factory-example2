@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link, Outlet, useParams, useNavigate } from "react-router-dom";
+import { ProjectList } from "./ProjectList";
 
 const Home = () => {
 	return (
@@ -33,7 +34,11 @@ const ProjectCreateWrapper = () => {
 };
 
 const ProjectListWrapper = () => {
-	return <div>List Projects</div>;
+	return (
+		<div>
+			<ProjectList />
+		</div>
+	);
 };
 
 const ProjectEditWrapper = () => {
@@ -46,6 +51,80 @@ const ProjectViewWrapper = () => {
 	const { projectid } = useParams();
 
 	return <div>View Project</div>;
+};
+
+const Boards = () => {
+	return (
+		<div>
+			<h2>Boards</h2>
+			<Outlet />
+		</div>
+	);
+};
+
+const BoardCreateWrapper = () => {
+	return <div>Create Board</div>;
+};
+
+const BoardListWrapper = () => {
+	return <div>List Boards</div>;
+};
+
+const BoardEditWrapper = () => {
+	const { boardid } = useParams();
+
+	return <div>Edit Board</div>;
+};
+
+const BoardViewWrapper = () => {
+	const { boardid } = useParams();
+
+	return <div>View Board</div>;
+};
+
+const BoardColumnsViewWrapper = () => {
+	const { boardid } = useParams();
+
+	return <div>View Board Columns with Tickets</div>;
+};
+
+const ColumnCreateWrapper = () => {
+	return <div>Create Column</div>;
+};
+
+const ColumnEditWrapper = () => {
+	const { columnid } = useParams();
+
+	return <div>Edit Column</div>;
+};
+
+const Tickets = () => {
+	return (
+		<div>
+			<h2>Tickets</h2>
+			<Outlet />
+		</div>
+	);
+};
+
+const TicketCreateWrapper = () => {
+	return <div>Create Ticket</div>;
+};
+
+const TicketEditWrapper = () => {
+	const { ticketid } = useParams();
+
+	return <div>Edit Ticket</div>;
+};
+
+const CommentCreateWrapper = () => {
+	return <div>Create Comment</div>;
+};
+
+const CommentEditWrapper = () => {
+	const { commentid } = useParams();
+
+	return <div>Edit Comment</div>;
 };
 
 export default function App() {
@@ -68,8 +147,23 @@ export default function App() {
 					<Route path="/projects/" element={<Projects />}>
 						<Route path="create" element={<ProjectCreateWrapper />} />
 						<Route path="list" element={<ProjectListWrapper />} />
-						<Route path="edit/:projectid/" element={<ProjectEditWrapper />} />
-						<Route path="view/:projectid/" element={<ProjectViewWrapper />} />
+						<Route path="edit/:projectid" element={<ProjectEditWrapper />} />
+						<Route path="view/:projectid" element={<ProjectViewWrapper />} />
+					</Route>
+					<Route path="/boards/" element={<Boards />}>
+						<Route path="create" element={<BoardCreateWrapper />} />
+						<Route path="list/:projectid" element={<BoardListWrapper />} />
+						<Route path="edit/:boardid" element={<BoardEditWrapper />} />
+						<Route path="view/:boardid" element={<BoardViewWrapper />} />
+						<Route path="view_columns/:boardid" element={<BoardColumnsViewWrapper />} />
+						<Route path="create_column" element={<ColumnCreateWrapper />} />
+						<Route path="edit_column/:columnid" element={<ColumnEditWrapper />} />
+					</Route>
+					<Route path="/tickets/" element={<Tickets />}>
+						<Route path="create" element={<TicketCreateWrapper />} />
+						<Route path="edit/:ticketid" element={<TicketEditWrapper />} />
+						<Route path="comment" element={<CommentCreateWrapper />} />
+						<Route path="edit_comment/:commentid" element={<CommentEditWrapper />} />
 					</Route>
 				</Routes>
 			</Router>

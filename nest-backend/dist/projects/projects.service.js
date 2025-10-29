@@ -27,7 +27,7 @@ let ProjectsService = class ProjectsService {
         return { id: res.raw.insertId };
     }
     findAll() {
-        return this.dataSource.createQueryBuilder().select('*').from(project_entity_1.Project, '*').getMany();
+        return this.dataSource.createQueryBuilder().select('*').from(project_entity_1.Project, '*').orderBy('updatedAt', 'DESC').getMany();
     }
     findOne(id) {
         return this.dataSource.createQueryBuilder().select('*').from(project_entity_1.Project, '*').where('id = :id', { id }).getOne();

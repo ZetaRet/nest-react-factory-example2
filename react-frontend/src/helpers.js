@@ -1,4 +1,4 @@
-async function fetchApi(action, method, data, callback) {
+export async function fetchApi(action, method, data, callback) {
 	const fdata = {
 		method: method,
 	};
