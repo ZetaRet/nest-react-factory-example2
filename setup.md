@@ -30,6 +30,7 @@ __React__ npm __package.json__ install:
 - react-router 6.30.0  
 - react-router-dom 6.30.0  
 - react-redux 9.2.0  
+- @reduxjs/toolkit 2.9.2  
 - @babel/core 7.28.5  
 - @babel/preset-react 7.28.5  
 - babel-loader 9.2.1  
