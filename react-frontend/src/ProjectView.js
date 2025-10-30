@@ -3,9 +3,7 @@ import { fetchApi } from "./helpers";
 
 export function ProjectView({ projectid }) {
 	const [project, setProject] = useState(null);
-	useMemo(async () => {
-		setProject(await fetchApi("/api/projects/" + projectid, "GET"));
-	}, [projectid]);
+	useMemo(async () => setProject(await fetchApi("/api/projects/" + projectid, "GET")), [projectid]);
 
 	return (
 		<div>

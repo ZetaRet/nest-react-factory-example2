@@ -1,7 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link, Outlet, useParams, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, Outlet, useParams } from "react-router-dom";
 import { ProjectList } from "./ProjectList";
 import { ProjectView } from "./ProjectView";
+import { ProjectEdit } from "./ProjectEdit";
+import { ProjectCreate } from "./ProjectCreate";
 
 const Home = () => {
 	return (
@@ -31,7 +33,11 @@ const Projects = () => {
 };
 
 const ProjectCreateWrapper = () => {
-	return <div>Create Project</div>;
+	return (
+		<div>
+			<ProjectCreate />
+		</div>
+	);
 };
 
 const ProjectListWrapper = () => {
@@ -45,7 +51,11 @@ const ProjectListWrapper = () => {
 const ProjectEditWrapper = () => {
 	const { projectid } = useParams();
 
-	return <div>Edit Project</div>;
+	return (
+		<div>
+			<ProjectEdit projectid={projectid} />
+		</div>
+	);
 };
 
 const ProjectViewWrapper = () => {

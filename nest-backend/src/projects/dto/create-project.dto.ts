@@ -10,6 +10,6 @@ export class CreateProjectDto {
   title: string;
 
   @IsNotEmpty()
-  @IsNumber()
+  @IsString()
   description: string;
 }
