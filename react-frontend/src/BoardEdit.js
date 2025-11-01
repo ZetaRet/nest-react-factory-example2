@@ -1,22 +1,27 @@
 import React, { useMemo, useRef, useState } from "react";
 import { fetchApi } from "./helpers";
-import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { projectActions } from "./slices";
-import { useSearchParams } from "react-router-dom";
 
-export function BoardCreate() {
-	const [searchParams] = useSearchParams();
-	const projectid = searchParams.get("projectid");
-	const [selectProjectId, setSelectProjectId] = useState(projectid);
+export function BoardEdit({ boardid }) {
+	const [board, setBoard] = useState(null);
+	useMemo(async () => {
+		const jdata = await fetchApi("/api/boards/" + boardid, "GET");
+		let form = formRef.current;
+		form.name.value = jdata.name;
+		form.title.value = jdata.title;
+		setSelectProjectId(jdata.project);
+		setBoard(jdata);
+	}, [boardid]);
 	const formRef = useRef();
-	const navigate = useNavigate();
 	var projects = useSelector((state) => state.project.projects);
 	const dispatch = useDispatch();
 	useMemo(
 		async () => fetchApi("/api/projects", "GET", null, (jdata) => dispatch(projectActions.setProjects(jdata))),
 		[]
 	);
+	const projectid = board?.project || null;
+	const [selectProjectId, setSelectProjectId] = useState(projectid);
 
 	async function onSubmit(e) {
 		e.preventDefault();
@@ -26,8 +31,7 @@ export function BoardCreate() {
 			title: form.title.value,
 			project: +form.project.value,
 		};
-		let res = await fetchApi("/api/boards", "POST", rdata);
-		navigate("/boards/view/" + res.id);
+		await fetchApi("/api/boards/" + boardid, "POST", rdata);
 	}
 
 	function onSelectChange() {
@@ -42,9 +46,9 @@ export function BoardCreate() {
 
 	return (
 		<div>
-			<h2>Board Create</h2>
-			<div className="board-create">
-				<form ref={formRef} className="form-create" onSubmit={onSubmit}>
+			<h2>Board Edit [{board && board.id}]</h2>
+			<div className="board-edit">
+				<form ref={formRef} className="form-edit" onSubmit={onSubmit}>
 					<input type="text" name="name" placeholder="Name" />
 					<br />
 					<input type="text" name="title" placeholder="Title" />

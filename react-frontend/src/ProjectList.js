@@ -22,9 +22,9 @@ export function ProjectList() {
 				{e.title} [{e.id}]
 			</Link>
 			<span> </span>
-			<Link to={"/boards/create?projectid=" + e.id}>Create Board</Link>
+			<Link to={"/boards/create?projectid=" + e.id} className="create-board-btn">Create Board</Link>
 			<span> </span>
-			<Link to={"/boards/list/" + e.id}>View Boards</Link>
+			<Link to={"/boards/list/" + e.id} className="view-boards-btn">View Boards</Link>
 		</div>
 	));
 	return (

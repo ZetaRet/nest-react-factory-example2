@@ -7,6 +7,8 @@ import { ProjectCreate } from "./ProjectCreate";
 import { useSelector } from "react-redux";
 import { BoardCreate } from "./BoardCreate";
 import { BoardList } from "./BoardList";
+import { BoardView } from "./BoardView";
+import { BoardEdit } from "./BoardEdit";
 
 export const ProjectContext = createContext();
 export const BoardContext = createContext();
@@ -104,13 +106,21 @@ const BoardListWrapper = () => {
 const BoardEditWrapper = () => {
 	const { boardid } = useParams();
 
-	return <div>Edit Board</div>;
+	return (
+		<div>
+			<BoardEdit boardid={boardid} />
+		</div>
+	);
 };
 
 const BoardViewWrapper = () => {
 	const { boardid } = useParams();
 
-	return <div>View Board</div>;
+	return (
+		<div>
+			<BoardView boardid={boardid} />
+		</div>
+	);
 };
 
 const BoardColumnsViewWrapper = () => {
