@@ -1,9 +1,13 @@
-import React from "react";
+import React, { createContext } from "react";
 import { BrowserRouter as Router, Route, Routes, Link, Outlet, useParams } from "react-router-dom";
 import { ProjectList } from "./ProjectList";
 import { ProjectView } from "./ProjectView";
 import { ProjectEdit } from "./ProjectEdit";
 import { ProjectCreate } from "./ProjectCreate";
+import { useSelector } from "react-redux";
+
+export const ProjectContext = createContext();
+export const BoardContext = createContext();
 
 const Home = () => {
 	return (
@@ -142,7 +146,7 @@ const CommentEditWrapper = () => {
 	return <div>Edit Comment</div>;
 };
 
-export default function App() {
+function AppInner() {
 	return (
 		<div>
 			<h1>Board Management</h1>
@@ -183,5 +187,18 @@ export default function App() {
 				</Routes>
 			</Router>
 		</div>
+	);
+}
+
+export default function App() {
+	const projectSelect = useSelector((state) => state.project.selected);
+	const boardSelect = useSelector((state) => state.board.selected);
+
+	return (
+		<ProjectContext value={projectSelect}>
+			<BoardContext value={boardSelect}>
+				<AppInner />
+			</BoardContext>
+		</ProjectContext>
 	);
 }
