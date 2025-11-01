@@ -20,7 +20,13 @@ export class BoardsService {
   }
 
   findAll(id: number) {
-    return this.dataSource.createQueryBuilder().select('*').from(Board, '*').where('project = :id', { id }).getMany();
+    return this.dataSource
+      .createQueryBuilder()
+      .select('*')
+      .from(Board, '*')
+      .where('project = :id', { id })
+      .orderBy('createdAt', 'ASC')
+      .getMany();
   }
 
   findOne(id: number) {
@@ -66,6 +72,7 @@ export class BoardsService {
       .select('*')
       .from(BoardColumn, '*')
       .where('board = :id', { id })
+      .orderBy('`index`', 'ASC')
       .getMany();
   }
 

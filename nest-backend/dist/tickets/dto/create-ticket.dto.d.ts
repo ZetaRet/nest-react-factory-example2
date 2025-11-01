@@ -3,6 +3,7 @@ export declare class CreateTicketDto {
     description: string;
     board: number;
     column: number;
+    done: boolean;
 }
 export declare class CreateCommentDto {
     username: string;

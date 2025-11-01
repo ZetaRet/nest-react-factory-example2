@@ -4,6 +4,7 @@ export declare class Ticket {
     description: string;
     board: number;
     column: number;
+    done: boolean;
     createdAt: Date;
     updatedAt: Date;
 }

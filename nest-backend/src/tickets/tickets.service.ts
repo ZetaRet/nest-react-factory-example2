@@ -20,7 +20,13 @@ export class TicketsService {
   }
 
   findAll(id: number) {
-    return this.dataSource.createQueryBuilder().select('*').from(Ticket, '*').where('board = :id', { id }).getMany();
+    return this.dataSource
+      .createQueryBuilder()
+      .select(['ts.id', 'ts.title', 'ts.board', 'ts.column', 'ts.done', 'ts.createdAt', 'ts.updatedAt'])
+      .from(Ticket, 'ts')
+      .where('ts.board = :id', { id })
+      .orderBy('ts.createdAt', 'ASC')
+      .getMany();
   }
 
   findOne(id: number) {
@@ -67,7 +73,13 @@ export class TicketsService {
   }
 
   getComments(id: number) {
-    return this.dataSource.createQueryBuilder().select('*').from(Comment, '*').where('ticket = :id', { id }).getMany();
+    return this.dataSource
+      .createQueryBuilder()
+      .select('*')
+      .from(Comment, '*')
+      .where('ticket = :id', { id })
+      .orderBy('createdAt', 'ASC')
+      .getMany();
   }
 
   async removeComment(id: number) {

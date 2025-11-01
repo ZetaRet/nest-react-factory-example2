@@ -27,7 +27,13 @@ let TicketsService = class TicketsService {
         return { id: res.raw.insertId };
     }
     findAll(id) {
-        return this.dataSource.createQueryBuilder().select('*').from(ticket_entity_1.Ticket, '*').where('board = :id', { id }).getMany();
+        return this.dataSource
+            .createQueryBuilder()
+            .select(['ts.id', 'ts.title', 'ts.board', 'ts.column', 'ts.done', 'ts.createdAt', 'ts.updatedAt'])
+            .from(ticket_entity_1.Ticket, 'ts')
+            .where('ts.board = :id', { id })
+            .orderBy('ts.createdAt', 'ASC')
+            .getMany();
     }
     findOne(id) {
         return this.dataSource.createQueryBuilder().select('*').from(ticket_entity_1.Ticket, '*').where('id = :id', { id }).getOne();
@@ -64,7 +70,13 @@ let TicketsService = class TicketsService {
         return { success: res.affected ? true : false };
     }
     getComments(id) {
-        return this.dataSource.createQueryBuilder().select('*').from(ticket_entity_1.Comment, '*').where('ticket = :id', { id }).getMany();
+        return this.dataSource
+            .createQueryBuilder()
+            .select('*')
+            .from(ticket_entity_1.Comment, '*')
+            .where('ticket = :id', { id })
+            .orderBy('createdAt', 'ASC')
+            .getMany();
     }
     async removeComment(id) {
         const res = await this.dataSource.createQueryBuilder().delete().from(ticket_entity_1.Comment).where('id = :id', { id }).execute();

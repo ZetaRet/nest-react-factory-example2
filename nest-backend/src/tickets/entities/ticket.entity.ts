@@ -20,6 +20,10 @@ export class Ticket {
   @Column('int')
   column: number;
 
+  @Index()
+  @Column({ default: false })
+  done: boolean;
+
   @CreateDateColumn()
   createdAt: Date;
 

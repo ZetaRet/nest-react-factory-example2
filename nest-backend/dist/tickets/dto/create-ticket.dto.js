@@ -34,6 +34,12 @@ __decorate([
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], CreateTicketDto.prototype, "column", void 0);
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsBoolean)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Boolean)
+], CreateTicketDto.prototype, "done", void 0);
 class CreateCommentDto {
 }
 exports.CreateCommentDto = CreateCommentDto;

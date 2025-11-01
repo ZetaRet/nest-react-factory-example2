@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateTicketDto {
   @IsNotEmpty()
@@ -16,6 +16,11 @@ export class CreateTicketDto {
   @IsNotEmpty()
   @IsNumber()
   column: number;
+
+  @IsNotEmpty()
+  @IsBoolean()
+  @IsOptional()
+  done: boolean;
 }
 
 export class CreateCommentDto {

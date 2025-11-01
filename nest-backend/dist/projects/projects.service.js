@@ -27,7 +27,12 @@ let ProjectsService = class ProjectsService {
         return { id: res.raw.insertId };
     }
     findAll() {
-        return this.dataSource.createQueryBuilder().select('*').from(project_entity_1.Project, '*').orderBy('updatedAt', 'DESC').getMany();
+        return this.dataSource
+            .createQueryBuilder()
+            .select(['pr.id', 'pr.name', 'pr.title', 'pr.createdAt', 'pr.updatedAt'])
+            .from(project_entity_1.Project, 'pr')
+            .orderBy('pr.updatedAt', 'DESC')
+            .getMany();
     }
     findOne(id) {
         return this.dataSource.createQueryBuilder().select('*').from(project_entity_1.Project, '*').where('id = :id', { id }).getOne();

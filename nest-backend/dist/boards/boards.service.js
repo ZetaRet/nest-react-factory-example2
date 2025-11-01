@@ -27,7 +27,13 @@ let BoardsService = class BoardsService {
         return { id: res.raw.insertId };
     }
     findAll(id) {
-        return this.dataSource.createQueryBuilder().select('*').from(board_entity_1.Board, '*').where('project = :id', { id }).getMany();
+        return this.dataSource
+            .createQueryBuilder()
+            .select('*')
+            .from(board_entity_1.Board, '*')
+            .where('project = :id', { id })
+            .orderBy('createdAt', 'ASC')
+            .getMany();
     }
     findOne(id) {
         return this.dataSource.createQueryBuilder().select('*').from(board_entity_1.Board, '*').where('id = :id', { id }).getOne();
@@ -65,6 +71,7 @@ let BoardsService = class BoardsService {
             .select('*')
             .from(board_entity_1.BoardColumn, '*')
             .where('board = :id', { id })
+            .orderBy('`index`', 'ASC')
             .getMany();
     }
     async removeColumn(id) {

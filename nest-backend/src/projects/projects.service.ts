@@ -20,7 +20,12 @@ export class ProjectsService {
   }
 
   findAll() {
-    return this.dataSource.createQueryBuilder().select('*').from(Project, '*').orderBy('updatedAt', 'DESC').getMany();
+    return this.dataSource
+      .createQueryBuilder()
+      .select(['pr.id', 'pr.name', 'pr.title', 'pr.createdAt', 'pr.updatedAt'])
+      .from(Project, 'pr')
+      .orderBy('pr.updatedAt', 'DESC')
+      .getMany();
   }
 
   findOne(id: number) {
