@@ -5,6 +5,8 @@ import { ProjectView } from "./ProjectView";
 import { ProjectEdit } from "./ProjectEdit";
 import { ProjectCreate } from "./ProjectCreate";
 import { useSelector } from "react-redux";
+import { BoardCreate } from "./BoardCreate";
+import { BoardList } from "./BoardList";
 
 export const ProjectContext = createContext();
 export const BoardContext = createContext();
@@ -82,11 +84,21 @@ const Boards = () => {
 };
 
 const BoardCreateWrapper = () => {
-	return <div>Create Board</div>;
+	return (
+		<div>
+			<BoardCreate />
+		</div>
+	);
 };
 
 const BoardListWrapper = () => {
-	return <div>List Boards</div>;
+	const { projectid } = useParams();
+
+	return (
+		<div>
+			<BoardList projectid={projectid} />
+		</div>
+	);
 };
 
 const BoardEditWrapper = () => {

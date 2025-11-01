@@ -21,6 +21,10 @@ export function ProjectList() {
 			<Link to={"/projects/view/" + e.id} className="view-btn">
 				{e.title} [{e.id}]
 			</Link>
+			<span> </span>
+			<Link to={"/boards/create?projectid=" + e.id}>Create Board</Link>
+			<span> </span>
+			<Link to={"/boards/list/" + e.id}>View Boards</Link>
 		</div>
 	));
 	return (

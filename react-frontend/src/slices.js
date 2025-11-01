@@ -23,7 +23,9 @@ export const boardSlice = createSlice({
 		setBoards: (state, action) => {
 			action.payload.forEach((e) => {
 				if (!state.boards[e.project]) state.boards[e.project] = [];
-				state.boards[e.project].push(e);
+				let found = state.boards[e.project].find((ee) => ee.id == e.id);
+				if (!found) state.boards[e.project].push(e);
+				else Object.assign(found, e);
 			});
 		},
 		selectBoard: (state, action) => {
