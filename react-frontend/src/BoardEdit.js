@@ -2,6 +2,7 @@ import React, { useMemo, useRef, useState } from "react";
 import { fetchApi } from "./helpers";
 import { useDispatch, useSelector } from "react-redux";
 import { projectActions } from "./slices";
+import { Link } from "react-router-dom";
 
 export function BoardEdit({ boardid }) {
 	const [board, setBoard] = useState(null);
@@ -16,10 +17,7 @@ export function BoardEdit({ boardid }) {
 	const formRef = useRef();
 	var projects = useSelector((state) => state.project.projects);
 	const dispatch = useDispatch();
-	useMemo(
-		async () => fetchApi("/api/projects", "GET", null, (jdata) => dispatch(projectActions.setProjects(jdata))),
-		[]
-	);
+	useMemo(async () => dispatch(projectActions.setProjects(await fetchApi("/api/projects", "GET"))), []);
 	const projectid = board?.project || null;
 	const [selectProjectId, setSelectProjectId] = useState(projectid);
 
@@ -48,6 +46,11 @@ export function BoardEdit({ boardid }) {
 		<div>
 			<h2>Board Edit [{board && board.id}]</h2>
 			<div className="board-edit">
+				<div>
+					<Link to={"/boards/view/" + boardid} className="nav-btn">
+						View Board
+					</Link>
+				</div>
 				<form ref={formRef} className="form-edit" onSubmit={onSubmit}>
 					<input type="text" name="name" placeholder="Name" />
 					<br />

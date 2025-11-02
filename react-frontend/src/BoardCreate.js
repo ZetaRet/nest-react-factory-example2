@@ -13,10 +13,7 @@ export function BoardCreate() {
 	const navigate = useNavigate();
 	var projects = useSelector((state) => state.project.projects);
 	const dispatch = useDispatch();
-	useMemo(
-		async () => fetchApi("/api/projects", "GET", null, (jdata) => dispatch(projectActions.setProjects(jdata))),
-		[]
-	);
+	useMemo(async () => dispatch(projectActions.setProjects(await fetchApi("/api/projects", "GET"))), []);
 
 	async function onSubmit(e) {
 		e.preventDefault();

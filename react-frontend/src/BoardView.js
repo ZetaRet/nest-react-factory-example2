@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { fetchApi } from "./helpers";
+import { Link } from "react-router-dom";
 
 export function BoardView({ boardid }) {
 	const [board, setBoard] = useState(null);
@@ -15,6 +16,15 @@ export function BoardView({ boardid }) {
 				<div>Project: {board && board.project}</div>
 				<div>Created At: {board && board.createdAt}</div>
 				<div>Updated At: {board && board.updatedAt}</div>
+				<div>
+					<Link to={"/boards/edit/" + boardid} className="nav-btn">
+						Edit Board
+					</Link>
+					<br />
+					<Link to={board && board.project ? "/boards/list/" + board.project : ""} className="nav-btn">
+						List Boards by Project
+					</Link>
+				</div>
 			</div>
 		</div>
 	);

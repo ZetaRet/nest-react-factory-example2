@@ -1,5 +1,6 @@
 import React, { useMemo, useRef, useState } from "react";
 import { fetchApi } from "./helpers";
+import { Link } from "react-router-dom";
 
 export function ProjectEdit({ projectid }) {
 	const [project, setProject] = useState(null);
@@ -28,6 +29,11 @@ export function ProjectEdit({ projectid }) {
 		<div>
 			<h2>Project Edit [{project && project.id}]</h2>
 			<div className="project-edit">
+				<div>
+					<Link to={"/projects/view/" + projectid} className="nav-btn">
+						View Project
+					</Link>
+				</div>
 				<form ref={formRef} className="form-edit" onSubmit={onSubmit}>
 					<input type="text" name="name" placeholder="Name" />
 					<br />
