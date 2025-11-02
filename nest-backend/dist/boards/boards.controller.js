@@ -42,6 +42,9 @@ let BoardsController = class BoardsController {
     getColumns(id) {
         return this.boardsService.getColumns(+id);
     }
+    getColumn(id) {
+        return this.boardsService.getColumn(+id);
+    }
     removeColumn(id) {
         return this.boardsService.removeColumn(+id);
     }
@@ -98,6 +101,13 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], BoardsController.prototype, "getColumns", null);
+__decorate([
+    (0, common_1.Get)('column/:id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], BoardsController.prototype, "getColumn", null);
 __decorate([
     (0, common_1.Get)('remove_column/:id'),
     __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),

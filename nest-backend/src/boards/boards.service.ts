@@ -76,6 +76,10 @@ export class BoardsService {
       .getMany();
   }
 
+  getColumn(id: number) {
+    return this.dataSource.createQueryBuilder().select('*').from(BoardColumn, '*').where('id = :id', { id }).getOne();
+  }
+
   async removeColumn(id: number) {
     const res = await this.dataSource
       .createQueryBuilder()

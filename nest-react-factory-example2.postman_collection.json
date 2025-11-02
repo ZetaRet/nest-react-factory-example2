@@ -330,6 +330,38 @@
 			"response": []
 		},
 		{
+			"name": "Get Board Column Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/boards/column/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"boards",
+						"column",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Remove Board Column",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true

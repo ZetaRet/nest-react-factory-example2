@@ -9,6 +9,8 @@ import { BoardCreate } from "./BoardCreate";
 import { BoardList } from "./BoardList";
 import { BoardView } from "./BoardView";
 import { BoardEdit } from "./BoardEdit";
+import { ColumnCreate } from "./ColumnCreate";
+import { ColumnEdit } from "./ColumnEdit";
 
 export const ProjectContext = createContext();
 export const BoardContext = createContext();
@@ -130,13 +132,21 @@ const BoardColumnsViewWrapper = () => {
 };
 
 const ColumnCreateWrapper = () => {
-	return <div>Create Column</div>;
+	return (
+		<div>
+			<ColumnCreate />
+		</div>
+	);
 };
 
 const ColumnEditWrapper = () => {
 	const { columnid } = useParams();
 
-	return <div>Edit Column</div>;
+	return (
+		<div>
+			<ColumnEdit columnid={columnid} />
+		</div>
+	);
 };
 
 const Tickets = () => {

@@ -74,6 +74,9 @@ let BoardsService = class BoardsService {
             .orderBy('`index`', 'ASC')
             .getMany();
     }
+    getColumn(id) {
+        return this.dataSource.createQueryBuilder().select('*').from(board_entity_1.BoardColumn, '*').where('id = :id', { id }).getOne();
+    }
     async removeColumn(id) {
         const res = await this.dataSource
             .createQueryBuilder()

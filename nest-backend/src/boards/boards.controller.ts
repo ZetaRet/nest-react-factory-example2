@@ -42,6 +42,11 @@ export class BoardsController {
     return this.boardsService.getColumns(+id);
   }
 
+  @Get('column/:id')
+  getColumn(@Param('id', ParseIntPipe) id: number) {
+    return this.boardsService.getColumn(+id);
+  }
+
   @Get('remove_column/:id')
   removeColumn(@Param('id', ParseIntPipe) id: number) {
     return this.boardsService.removeColumn(+id);

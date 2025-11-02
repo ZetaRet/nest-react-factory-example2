@@ -20,6 +20,7 @@ export declare class BoardsService {
         success: boolean;
     }>;
     getColumns(id: number): Promise<BoardColumn[]>;
+    getColumn(id: number): Promise<BoardColumn>;
     removeColumn(id: number): Promise<{
         success: boolean;
     }>;

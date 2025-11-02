@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchApi } from "./helpers";
-import { boardActions, projectActions } from "./slices";
+import { boardActions } from "./slices";
 import { Link } from "react-router-dom";
 
 export function BoardList({ projectid }) {

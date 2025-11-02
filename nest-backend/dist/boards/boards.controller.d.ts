@@ -19,6 +19,7 @@ export declare class BoardsController {
         success: boolean;
     }>;
     getColumns(id: number): Promise<import("./entities/board.entity").BoardColumn[]>;
+    getColumn(id: number): Promise<import("./entities/board.entity").BoardColumn>;
     removeColumn(id: number): Promise<{
         success: boolean;
     }>;
