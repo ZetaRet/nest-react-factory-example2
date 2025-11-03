@@ -124,7 +124,7 @@ form button:hover {
     background-color: #2c87d6;
 }
 
-.create-board-btn {
+.create-board-btn, .create-column-btn, .create-ticket-btn {
     padding: 8px;
     margin-left: 10px;
     background-color: #f5b561;
@@ -134,11 +134,11 @@ form button:hover {
     display: inline-block;
 }
 
-.create-board-btn:hover {
+.create-board-btn:hover, .create-column-btn:hover, .create-ticket-btn:hover {
     background-color: #91590f;
 }
 
-.view-boards-btn {
+.view-boards-btn, .view-board-columns-btn {
     padding: 8px;
     margin-left: 10px;
     background-color: #2e8822;
@@ -148,7 +148,7 @@ form button:hover {
     display: inline-block;
 }
 
-.view-boards-btn:hover {
+.view-boards-btn:hover, .view-board-columns-btn:hover {
     background-color: #19630f;
 }
 
@@ -167,18 +167,10 @@ form button:hover {
     background-color: #2c87d6;
 }
 
-.boards-list {
+.boards-list, .board-create, .board-view, .board-edit {
     text-align: center;
 }
 
-.board-create {
-    text-align: center;
-}
-
-.board-view {
-    text-align: center;
-}
-
-.board-edit {
+.column-create, .column-edit {
     text-align: center;
 }

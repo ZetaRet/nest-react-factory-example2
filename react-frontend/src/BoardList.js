@@ -22,6 +22,18 @@ export function BoardList({ projectid }) {
 			<Link to={"/boards/view/" + e.id} className="view-btn">
 				{e.title} [{e.id}]
 			</Link>
+			<span> </span>
+			<Link to={"/boards/create_column?boardid=" + e.id} className="create-column-btn">
+				Create Column
+			</Link>
+			<span> </span>
+			<Link to={"/tickets/create?boardid=" + e.id} className="create-ticket-btn">
+				Create Ticket
+			</Link>
+			<span> </span>
+			<Link to={"/boards/view_columns/" + e.id} className="view-board-columns-btn">
+				View Boards
+			</Link>
 		</div>
 	));
 	return (

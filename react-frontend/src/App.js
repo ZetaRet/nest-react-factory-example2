@@ -168,6 +168,12 @@ const TicketEditWrapper = () => {
 	return <div>Edit Ticket</div>;
 };
 
+const TicketViewWrapper = () => {
+	const { ticketid } = useParams();
+
+	return <div>View Ticket</div>;
+};
+
 const CommentCreateWrapper = () => {
 	return <div>Create Comment</div>;
 };
@@ -213,6 +219,7 @@ function AppInner() {
 					<Route path="/tickets/" element={<Tickets />}>
 						<Route path="create" element={<TicketCreateWrapper />} />
 						<Route path="edit/:ticketid" element={<TicketEditWrapper />} />
+						<Route path="view/:ticketid" element={<TicketViewWrapper />} />
 						<Route path="comment" element={<CommentCreateWrapper />} />
 						<Route path="edit_comment/:commentid" element={<CommentEditWrapper />} />
 					</Route>
