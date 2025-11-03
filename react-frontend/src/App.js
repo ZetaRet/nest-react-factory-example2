@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { BrowserRouter as Router, Route, Routes, Link, Outlet, useParams } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, Outlet, useParams, useSearchParams } from "react-router-dom";
 import { ProjectList } from "./ProjectList";
 import { ProjectView } from "./ProjectView";
 import { ProjectEdit } from "./ProjectEdit";
@@ -11,6 +11,9 @@ import { BoardView } from "./BoardView";
 import { BoardEdit } from "./BoardEdit";
 import { ColumnCreate } from "./ColumnCreate";
 import { ColumnEdit } from "./ColumnEdit";
+import { TicketCreate } from "./TicketCreate";
+import { TicketEdit } from "./TicketEdit";
+import { TicketView } from "./TicketView";
 
 export const ProjectContext = createContext();
 export const BoardContext = createContext();
@@ -159,19 +162,34 @@ const Tickets = () => {
 };
 
 const TicketCreateWrapper = () => {
-	return <div>Create Ticket</div>;
+	const [searchParams] = useSearchParams();
+	const boardid = searchParams.get("boardid");
+
+	return (
+		<div>
+			<TicketCreate boardid={boardid} />
+		</div>
+	);
 };
 
 const TicketEditWrapper = () => {
 	const { ticketid } = useParams();
 
-	return <div>Edit Ticket</div>;
+	return (
+		<div>
+			<TicketEdit ticketid={ticketid} />
+		</div>
+	);
 };
 
 const TicketViewWrapper = () => {
 	const { ticketid } = useParams();
 
-	return <div>View Ticket</div>;
+	return (
+		<div>
+			<TicketView ticketid={ticketid} />
+		</div>
+	);
 };
 
 const CommentCreateWrapper = () => {

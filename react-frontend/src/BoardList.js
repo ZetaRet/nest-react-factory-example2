@@ -32,7 +32,7 @@ export function BoardList({ projectid }) {
 			</Link>
 			<span> </span>
 			<Link to={"/boards/view_columns/" + e.id} className="view-board-columns-btn">
-				View Boards
+				View Board Columns
 			</Link>
 		</div>
 	));

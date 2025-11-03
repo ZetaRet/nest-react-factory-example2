@@ -174,3 +174,7 @@ form button:hover {
 .column-create, .column-edit {
     text-align: center;
 }
+
+.ticket-create, .ticket-edit, .ticket-view {
+    text-align: center;
+}

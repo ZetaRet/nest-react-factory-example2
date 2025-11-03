@@ -1,28 +1,14 @@
-import React, { useMemo, useReducer, useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { fetchApi } from "./helpers";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { boardActions } from "./slices";
-import { useSearchParams } from "react-router-dom";
 
-export function ColumnCreate() {
-	const [searchParams] = useSearchParams();
-	const boardid = searchParams.get("boardid");
+export function TicketCreate({ boardid }) {
 	const [selectBoardId, setSelectBoardId] = useState(boardid);
-	const [board, boardDispatch] = useReducer(
-		(state, action) => {
-			switch (action.type) {
-				case "getBoard": {
-					return action.payload;
-				}
-			}
-		},
-		{ id: boardid }
-	);
-	useMemo(
-		async () => boardDispatch({ payload: await fetchApi("/api/boards/" + boardid, "GET"), type: "getBoard" }),
-		[]
-	);
+	const [board, setBoard] = useState({ id: boardid });
+	const [columns, setColumns] = useState();
+	useMemo(async () => setBoard(await fetchApi("/api/boards/" + boardid, "GET")), [boardid]);
 	const formRef = useRef();
 	const navigate = useNavigate();
 	var boards = useSelector((state) => state.board.boards);
@@ -31,6 +17,10 @@ export function ColumnCreate() {
 		if (board.project)
 			dispatch(boardActions.setBoards(await fetchApi("/api/boards/project/" + board.project, "GET")));
 	}, [board]);
+	useMemo(
+		async () => setColumns(await fetchApi("/api/boards/column_board/" + selectBoardId, "GET")),
+		[selectBoardId]
+	);
 
 	var projectBoards = boards[board.project] || [];
 
@@ -38,13 +28,13 @@ export function ColumnCreate() {
 		e.preventDefault();
 		let form = formRef.current;
 		let rdata = {
-			name: form.name.value,
 			title: form.title.value,
+			description: form.description.value,
 			board: +form.board.value,
-			index: +form.index.value,
+			column: +form.column.value,
 		};
-		await fetchApi("/api/boards/column/create", "POST", rdata);
-		navigate("/boards/view_columns/" + rdata.board);
+		const jdata = await fetchApi("/api/tickets", "POST", rdata);
+		navigate("/tickets/view/" + jdata.id);
 	}
 
 	function onSelectChange() {
@@ -56,21 +46,26 @@ export function ColumnCreate() {
 			{e.title} [{e.id}]
 		</option>
 	));
+	const columnOptions = (columns || []).map((e) => (
+		<option key={e.id} value={e.id}>
+			{e.title} [{e.id}]
+		</option>
+	));
 
 	return (
 		<div>
-			<h2>Column Create</h2>
-			<div className="column-create">
+			<h2>Ticket Create</h2>
+			<div className="ticket-create">
 				<form ref={formRef} className="form-create" onSubmit={onSubmit}>
-					<input type="text" name="name" placeholder="Name" />
-					<br />
 					<input type="text" name="title" placeholder="Title" />
+					<br />
+					<textarea name="description" placeholder="Description"></textarea>
 					<br />
 					<select name="board" onChange={onSelectChange} value={selectBoardId}>
 						{selectDom}
 					</select>
 					<br />
-					<input type="number" name="index" placeholder="Index" />
+					<select name="column">{columnOptions}</select>
 					<br />
 					<button type="submit">Submit</button>
 				</form>
