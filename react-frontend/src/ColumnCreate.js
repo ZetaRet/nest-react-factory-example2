@@ -62,15 +62,15 @@ export function ColumnCreate() {
 			<h2>Column Create</h2>
 			<div className="column-create">
 				<form ref={formRef} className="form-create" onSubmit={onSubmit}>
-					<input type="text" name="name" placeholder="Name" />
+					<input type="text" name="name" placeholder="Name" required />
 					<br />
-					<input type="text" name="title" placeholder="Title" />
+					<input type="text" name="title" placeholder="Title" required />
 					<br />
 					<select name="board" onChange={onSelectChange} value={selectBoardId}>
 						{selectDom}
 					</select>
 					<br />
-					<input type="number" name="index" placeholder="Index" />
+					<input type="number" name="index" placeholder="Index" required />
 					<br />
 					<button type="submit">Submit</button>
 				</form>

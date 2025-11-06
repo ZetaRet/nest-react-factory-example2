@@ -69,15 +69,15 @@ export function ColumnEdit({ columnid }) {
 			<h2>Column Edit</h2>
 			<div className="column-edit">
 				<form ref={formRef} className="form-edit" onSubmit={onSubmit}>
-					<input type="text" name="name" placeholder="Name" />
+					<input type="text" name="name" placeholder="Name" required />
 					<br />
-					<input type="text" name="title" placeholder="Title" />
+					<input type="text" name="title" placeholder="Title" required />
 					<br />
 					<select name="board" onChange={onSelectChange} value={selectBoardId}>
 						{selectDom}
 					</select>
 					<br />
-					<input type="number" name="index" placeholder="Index" />
+					<input type="number" name="index" placeholder="Index" required />
 					<br />
 					<button type="submit">Submit</button>
 				</form>

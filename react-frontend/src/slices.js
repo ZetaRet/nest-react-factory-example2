@@ -18,7 +18,7 @@ export const projectActions = projectSlice.actions;
 
 export const boardSlice = createSlice({
 	name: "board",
-	initialState: { boards: {}, selected: null },
+	initialState: { boards: {}, selected: null, columns: [] },
 	reducers: {
 		setBoards: (state, action) => {
 			action.payload.forEach((e) => {
@@ -31,7 +31,30 @@ export const boardSlice = createSlice({
 		selectBoard: (state, action) => {
 			state.selected = action.payload;
 		},
+		setColumns: (state, action) => {
+			state.columns = action.payload;
+		},
 	},
 });
 
 export const boardActions = boardSlice.actions;
+
+export const ticketSlice = createSlice({
+	name: "ticket",
+	initialState: { tickets: [], ticketsByColumn: {}, boardid: null },
+	reducers: {
+		setBoardId: (state, action) => {
+			state.boardid = action.payload.boardid;
+		},
+		setTickets: (state, action) => {
+			state.tickets = action.payload;
+			state.ticketsByColumn = {};
+			state.tickets.forEach((e) => {
+				if (!state.ticketsByColumn[e.column]) state.ticketsByColumn[e.column] = [];
+				state.ticketsByColumn[e.column].push(e);
+			});
+		},
+	},
+});
+
+export const ticketActions = ticketSlice.actions;

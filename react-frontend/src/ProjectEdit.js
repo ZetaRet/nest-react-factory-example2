@@ -35,11 +35,11 @@ export function ProjectEdit({ projectid }) {
 					</Link>
 				</div>
 				<form ref={formRef} className="form-edit" onSubmit={onSubmit}>
-					<input type="text" name="name" placeholder="Name" />
+					<input type="text" name="name" placeholder="Name" required />
 					<br />
-					<input type="text" name="title" placeholder="Title" />
+					<input type="text" name="title" placeholder="Title" required />
 					<br />
-					<textarea name="description" placeholder="Description"></textarea>
+					<textarea name="description" placeholder="Description" required></textarea>
 					<br />
 					<button type="submit">Submit</button>
 				</form>

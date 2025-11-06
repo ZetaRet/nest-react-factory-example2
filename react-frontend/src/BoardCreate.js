@@ -42,9 +42,9 @@ export function BoardCreate() {
 			<h2>Board Create</h2>
 			<div className="board-create">
 				<form ref={formRef} className="form-create" onSubmit={onSubmit}>
-					<input type="text" name="name" placeholder="Name" />
+					<input type="text" name="name" placeholder="Name" required />
 					<br />
-					<input type="text" name="title" placeholder="Title" />
+					<input type="text" name="title" placeholder="Title" required />
 					<br />
 					<select name="project" onChange={onSelectChange} value={selectProjectId}>
 						{selectDom}

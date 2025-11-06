@@ -54,12 +54,12 @@ export function TicketCreate({ boardid }) {
 
 	return (
 		<div>
-			<h2>Ticket Create</h2>
+			<h2>Create Ticket</h2>
 			<div className="ticket-create">
 				<form ref={formRef} className="form-create" onSubmit={onSubmit}>
-					<input type="text" name="title" placeholder="Title" />
+					<input type="text" name="title" placeholder="Title" required />
 					<br />
-					<textarea name="description" placeholder="Description"></textarea>
+					<textarea name="description" placeholder="Description" required></textarea>
 					<br />
 					<select name="board" onChange={onSelectChange} value={selectBoardId}>
 						{selectDom}

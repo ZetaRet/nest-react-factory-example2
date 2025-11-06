@@ -14,6 +14,9 @@ import { ColumnEdit } from "./ColumnEdit";
 import { TicketCreate } from "./TicketCreate";
 import { TicketEdit } from "./TicketEdit";
 import { TicketView } from "./TicketView";
+import { CommentCreate } from "./CommentCreate";
+import { CommentEdit } from "./CommentEdit";
+import { BoardColumnsView } from "./BoardColumnsView";
 
 export const ProjectContext = createContext();
 export const BoardContext = createContext();
@@ -131,7 +134,11 @@ const BoardViewWrapper = () => {
 const BoardColumnsViewWrapper = () => {
 	const { boardid } = useParams();
 
-	return <div>View Board Columns with Tickets</div>;
+	return (
+		<div>
+			<BoardColumnsView boardid={boardid} />
+		</div>
+	);
 };
 
 const ColumnCreateWrapper = () => {
@@ -193,13 +200,21 @@ const TicketViewWrapper = () => {
 };
 
 const CommentCreateWrapper = () => {
-	return <div>Create Comment</div>;
+	return (
+		<div>
+			<CommentCreate />
+		</div>
+	);
 };
 
 const CommentEditWrapper = () => {
 	const { commentid } = useParams();
 
-	return <div>Edit Comment</div>;
+	return (
+		<div>
+			<CommentEdit commentid={commentid} />
+		</div>
+	);
 };
 
 function AppInner() {

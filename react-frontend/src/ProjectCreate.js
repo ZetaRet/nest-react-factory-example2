@@ -23,11 +23,11 @@ export function ProjectCreate() {
 			<h2>Project Create</h2>
 			<div className="project-create">
 				<form ref={formRef} className="form-create" onSubmit={onSubmit}>
-					<input type="text" name="name" placeholder="Name" />
+					<input type="text" name="name" placeholder="Name" required />
 					<br />
-					<input type="text" name="title" placeholder="Title" />
+					<input type="text" name="title" placeholder="Title" required />
 					<br />
-					<textarea name="description" placeholder="Description"></textarea>
+					<textarea name="description" placeholder="Description" required></textarea>
 					<br />
 					<button type="submit">Submit</button>
 				</form>
