@@ -70,7 +70,7 @@ export function TicketEdit({ ticketid }) {
 
 	return (
 		<div>
-			<h2>Edit Ticket</h2>
+			<h2>Edit Ticket [{ticketid}]</h2>
 			<div className="ticket-edit">
 				<div>
 					<Link to={"/tickets/view/" + ticketid} className="nav-btn">

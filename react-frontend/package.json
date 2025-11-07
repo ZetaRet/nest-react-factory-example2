@@ -1,6 +1,6 @@
 {
   "name": "react-frontend",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,8 +9,8 @@
     "watch-dev": "webpack --mode development --watch",
     "build": "webpack --mode production",
     "start": "webpack --mode development",
-    "serve": "webpack serve --mode production --open",
-    "serve-dev": "webpack serve --mode development --open"
+    "serve": "webpack serve --mode production --no-open",
+    "serve-dev": "webpack serve --mode development --no-open"
   },
   "keywords": [],
   "author": "",

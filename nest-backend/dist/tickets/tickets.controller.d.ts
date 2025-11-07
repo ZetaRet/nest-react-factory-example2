@@ -18,6 +18,7 @@ export declare class TicketsController {
     createComment(createCommentDto: CreateCommentDto): Promise<{
         id: any;
     }>;
+    getComment(id: number): Promise<import("./entities/ticket.entity").Comment>;
     updateComment(id: number, updateCommentDto: UpdateCommentDto): Promise<{
         success: boolean;
     }>;

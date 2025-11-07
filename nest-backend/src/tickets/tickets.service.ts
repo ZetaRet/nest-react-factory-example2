@@ -72,6 +72,10 @@ export class TicketsService {
     return { success: res.affected ? true : false };
   }
 
+  getComment(id: number) {
+    return this.dataSource.createQueryBuilder().select('*').from(Comment, '*').where('id = :id', { id }).getOne();
+  }
+
   getComments(id: number) {
     return this.dataSource
       .createQueryBuilder()

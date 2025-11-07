@@ -37,6 +37,11 @@ export class TicketsController {
     return this.ticketsService.createComment(createCommentDto);
   }
 
+  @Get('comment/:id')
+  getComment(@Param('id', ParseIntPipe) id: number) {
+    return this.ticketsService.getComment(+id);
+  }
+
   @Post('comment/:id')
   updateComment(@Param('id', ParseIntPipe) id: number, @Body() updateCommentDto: UpdateCommentDto) {
     return this.ticketsService.updateComment(+id, updateCommentDto);

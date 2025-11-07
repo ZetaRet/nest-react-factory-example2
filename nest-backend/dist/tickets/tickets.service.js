@@ -69,6 +69,9 @@ let TicketsService = class TicketsService {
             .execute();
         return { success: res.affected ? true : false };
     }
+    getComment(id) {
+        return this.dataSource.createQueryBuilder().select('*').from(ticket_entity_1.Comment, '*').where('id = :id', { id }).getOne();
+    }
     getComments(id) {
         return this.dataSource
             .createQueryBuilder()

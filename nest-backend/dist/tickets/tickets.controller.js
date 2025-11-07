@@ -39,6 +39,9 @@ let TicketsController = class TicketsController {
     createComment(createCommentDto) {
         return this.ticketsService.createComment(createCommentDto);
     }
+    getComment(id) {
+        return this.ticketsService.getComment(+id);
+    }
     updateComment(id, updateCommentDto) {
         return this.ticketsService.updateComment(+id, updateCommentDto);
     }
@@ -93,6 +96,13 @@ __decorate([
     __metadata("design:paramtypes", [create_ticket_dto_1.CreateCommentDto]),
     __metadata("design:returntype", void 0)
 ], TicketsController.prototype, "createComment", null);
+__decorate([
+    (0, common_1.Get)('comment/:id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], TicketsController.prototype, "getComment", null);
 __decorate([
     (0, common_1.Post)('comment/:id'),
     __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),

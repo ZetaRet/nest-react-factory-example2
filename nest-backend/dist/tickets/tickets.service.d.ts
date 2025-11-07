@@ -22,6 +22,7 @@ export declare class TicketsService {
     updateComment(id: number, updateCommentDto: UpdateCommentDto): Promise<{
         success: boolean;
     }>;
+    getComment(id: number): Promise<Comment>;
     getComments(id: number): Promise<Comment[]>;
     removeComment(id: number): Promise<{
         success: boolean;
