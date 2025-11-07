@@ -171,6 +171,27 @@ form button:hover {
     text-align: center;
 }
 
+.board-columns {
+    display: flex;
+    justify-content: center;
+}
+
+.board-column {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.column-ticket {
+    background: #dfdfdf;
+    margin: 5px;
+    padding: 5px;
+}
+
+.project-div, .board-div {
+    text-align: center;
+}
+
 .column-create, .column-edit {
     text-align: center;
 }

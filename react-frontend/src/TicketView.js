@@ -35,6 +35,9 @@ export function TicketView({ ticketid }) {
 					<Link to={"/tickets/edit/" + ticketid} className="nav-btn">
 						Edit Ticket
 					</Link>
+					<Link to={"/boards/view_columns/" + (ticket ? ticket.board : "")} className="nav-btn">
+						View Board Columns
+					</Link>
 				</div>
 			</div>
 			<div className="comment-view">

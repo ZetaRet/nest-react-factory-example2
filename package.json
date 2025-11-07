@@ -1,6 +1,6 @@
 {
   "name": "nest-react-factory-example2",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "scripts": {
     "start": "NODE_ENV=rootprod node nest-backend/dist/main.js"
