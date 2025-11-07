@@ -28,6 +28,10 @@ export function BoardColumnsView({ boardid }) {
 		<div key={e.id} className="board-column">
 			<div>
 				<b>{e.title}</b>
+				<br />
+				<Link to={"/boards/edit_column/" + e.id} className="nav-btn">
+					Edit Column
+				</Link>
 			</div>
 			<div>
 				<BoardColumn columnid={e.id} ticketData={ticketsByColumn[e.id]} />
@@ -39,7 +43,11 @@ export function BoardColumnsView({ boardid }) {
 		<div>
 			<h2>View Board Columns with Tickets</h2>
 			<div className="project-div">
-				<b>Project [{project && project.id}]</b>
+				<b>Project [{project && project.id}] </b>
+				<br />
+				<Link to={"/projects/edit/" + (project ? project.id : "")} className="nav-btn">
+					Edit Project
+				</Link>
 				<br />
 				{project && project.title}
 				<br />
@@ -47,6 +55,10 @@ export function BoardColumnsView({ boardid }) {
 			</div>
 			<div className="board-div">
 				<b>Board Title:</b> {board && board.title} [{board && board.id}]
+				<br />
+				<Link to={"/boards/edit/" + (board ? board.id : "")} className="nav-btn">
+					Edit Board
+				</Link>
 			</div>
 			<div className="board-columns">{columnDom}</div>
 		</div>
